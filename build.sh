@@ -77,9 +77,9 @@ ensure-brew-packages() {
   ([[ -z "${1}" ]] || [[ ! -f "${1}" ]]) && echo "\$1 must be the location of your dependency file!" && exit 1
   DEPS_FILE="${TEMP_DIR}/$(basename ${1})"
   # Create temp file so we can add to it
-  cat $1 >$DEPS_FILE
+  cat $1 >${DEPS_FILE}
   if [[ ! -z "${2}" ]]; then # Handle EXTRA_DEPS passed in and add them to temp DEPS_FILE
-    printf "\n" >>$DEPS_FILE # Avoid needing a new line at the end of deps files
+    printf "\n" >>${DEPS_FILE} # Avoid needing a new line at the end of deps files
     OLDIFS="$IFS"
     IFS=$''
     _2=("$(echo $2 | sed 's/-s /-s\n/g')")
