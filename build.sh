@@ -56,8 +56,7 @@ ensure-homebrew() {
       "") echo "What would you like to do?" ;;
       0 | true | [Yy]*)
         "${XCODESELECT}" --install 2>/dev/null || true
-        if ! execute "${RUBY}" -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; then
-          echo "${COLOR_RED}Unable to install HomeBrew!${COLOR_NC}" && exit 1
+        curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
         else BREW=$(command -v brew); fi
         break
         ;;
